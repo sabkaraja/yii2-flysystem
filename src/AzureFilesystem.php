@@ -8,7 +8,7 @@
 namespace creocoder\flysystem;
 
 use League\Flysystem\Azure\AzureAdapter;
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Common\ServicesBuilder;
 use yii\base\InvalidConfigException;
 
 /**
@@ -59,7 +59,7 @@ class AzureFilesystem extends Filesystem
         return new AzureAdapter(
             ServicesBuilder::getInstance()->createBlobService(sprintf(
                 'DefaultEndpointsProtocol=https;AccountName=%s;AccountKey=%s',
-                base64_encode($this->accountName),
+                ($this->accountName),
                 base64_encode($this->accountKey)
             )),
             $this->container
